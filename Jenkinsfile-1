@@ -4,7 +4,6 @@ pipeline {
     stage('Scan') {
       steps {
          withSonarQubeEnv('sonar') {
-          sh" ${SCANNER_HOME}/bin/sonar-scanner \
             -Dsonar.projectKey=java-web-app \
             -Dsonar.sources=. \
             -Dsonar.host.url=http://172.17.32.1:9000 \
