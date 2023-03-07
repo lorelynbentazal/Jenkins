@@ -3,8 +3,6 @@ pipeline {
   stages {
     stage('Scan') {
       steps {
-        withSonarQubeEnv(installationName: 'sonar') { 
-          sonar-scanner
          withSonarQubeEnv('sonarqube-server') {
           sh" ${SCANNER_HOME**}**}/bin/sonar-scanner \
             -Dsonar.projectKey=java-web-app \
