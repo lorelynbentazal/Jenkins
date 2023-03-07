@@ -5,6 +5,12 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'sonar') { 
           sonar-scanner
+         withSonarQubeEnv('sonarqube-server') {
+          sh" ${SCANNER_HOME**}**}/bin/sonar-scanner \
+            -Dsonar.projectKey=java-web-app \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://172.17.32.1:9000 \
+            -Dsonar.login=87e17e093a15ed17b193e259e0d1f5b4bd62ef9f \"
         }
       }
     }
