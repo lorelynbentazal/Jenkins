@@ -1,12 +1,13 @@
 pipeline {
   agent any
-  stages {
-    stage('Scan') {
-      steps {
-         withSonarQubeEnv('sonar') {
-           sh './mvnw clean org.sonarsourse.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-        }
-      }
+    stage('SCM') {
+    git 'https://github.com/lorelynbentazal/Jenkins.git'
+    }
+    stage('SonarQube analysis') {
+      def scannerHome = tool 'SonarScanner 4.0';
+      withSonarQubeEnv('sonar') { 
+        sh "${scannerHome}/bin/sonar-scanner"
     }
   }
 }
+
