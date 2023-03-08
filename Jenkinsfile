@@ -3,8 +3,9 @@ node {
     checkout scm
   }
   stage('SonarQube Analysis') {
-    withSonarQubeEnv(installationName: 'sonarqube') {
-      sh 'sonar:sonar'
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh 'sonar-scanner'
     }
   }
 }
