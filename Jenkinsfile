@@ -1,10 +1,10 @@
 node {
   stage('SCM') {
-    git 'https://github.com/lorelynbentazal/Jenkins.git'
+    checkout scm
   }
-  stage('SonarQube analysis') {
+  stage('SonarQube Analysis') {
     def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv('sonarqube') {
+    withSonarQubeEnv() {
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
