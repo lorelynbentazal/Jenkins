@@ -10,6 +10,7 @@ node {
                    -Dsonar.host.url=http://192.168.68.103:9000 \
                    -Dsonar.login=squ_fefb0ad683c41a8170385110d40b3839f3f24c13 \
                    -Dsonar.projectName=Jenkins
+      '''
     }
   }
 }
