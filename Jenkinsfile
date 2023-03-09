@@ -1,5 +1,4 @@
 node {
-  stages {
     stage('SCM') {
        checkout scm
        }
@@ -11,7 +10,6 @@ node {
         Name = "sonarqube"
         steps {
           sh 'sonar-scanner'
-        }
       }
     }
   }
