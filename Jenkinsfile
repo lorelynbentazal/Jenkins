@@ -4,13 +4,14 @@ node {
   }
   stages {
     stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
-    }
-     stage(Env Variables) {
       environment {
-        Name = "sonarqube"
-        steps {
-          sh 'sonar-scanner'
+        sonarqube = tool 'sonar-scanner'
+      }
+      steps {
+        withSonarQubeEnv('sonarqube') {
+          sh" ${SCANNER_HOME}}/bin/sonar-scanner \
+                    -Dsonar.projectKey=test \
+                    -Dsonar.sources=. "
         }
       }
     }
