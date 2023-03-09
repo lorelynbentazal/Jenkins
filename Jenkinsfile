@@ -5,7 +5,7 @@ node {
    stage('SonarQube Analysis') {
      environment {
        sonarqube = tool 'sonar-scanner'
-     withSonarQubeEnv('sonarqube') {
+     withSonarQubeEnv() {
        sh" ${sonarqube}}/bin/sonar-scanner \
           -Dsonar.projectKey=Jenkins \
           -Dsonar.sources=. "
