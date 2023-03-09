@@ -5,7 +5,7 @@ node {
   stage('SonarQube Analysis') {
     def scannerHome = tool 'SonarScanner';
     withSonarQubeEnv('sonarqube') {
-      sh "${scannerHome}/bin/sonar-scanner"
+      sh "$C:\ProgramData\Jenkins\.jenkins\tools\hudson.plugins.sonar.SonarRunnerInstallation\SonarScanner\bin"
     }
   }
 }
