@@ -4,12 +4,9 @@ node {
        }
     stage('SonarQube Analysis') {
     def scannerHome = tool 'SonarScanner';
-    }
-    stage(Env Variables) {
-      environment {
-        Name = "sonarqube"
-        steps {
-          sh 'sonar-scanner'
+        withSonarQubeEnv(installationName: 'sonarqube') {
+            sh '.mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+
       }
     }
   }
