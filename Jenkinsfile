@@ -5,11 +5,13 @@ node {
   stages {
     stage('SonarQube Analysis') {
     def scannerHome = tool 'SonarScanner';
-     stage(Env Variables)
+    }
+     stage(Env Variables) {
       environment {
         Name = "sonarqube"
         steps {
           sh 'sonar-scanner'
+        }
       }
     }
   }
